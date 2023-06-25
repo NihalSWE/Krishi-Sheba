@@ -1,0 +1,28 @@
+{% extends 'Pages/base.html' %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+
+
+{% block body %}
+
+<div class=" container">
+
+<h1 class="text-center">Your Searching Items: </h1>
+
+{% for p in results %}
+<div class="col-md-6 offset-md-3 mb-3 p-3 border shadow  text-dark">
+<div class="card-body pl-5">
+Title: {{p.title}} <br>
+Brand: {{p.brand}} <br>
+Price: {{p.selling_price}}Tk <br>
+<hr>
+Description: {{p.description}}
+<a href="/ProductItem/product_detail/{{p.id}}">...More Info.</a>
+</div>
+</div>
+{% endfor %}
+    
+
+</div>
+
+{% endblock body %}
