@@ -1,0 +1,57 @@
+{% extends "Pages/base.html" %}
+
+{% load static %}
+{% block title %}Rent{% endblock title %}
+{% block body %}
+
+
+<section class="dash-heading py-5 text-dark ">
+    <div class="container">
+      <div class="row text-center"> 
+        <div class="col-md-12">
+          <div class="text-center">  
+            <h1 class="display-4">Wellcome <strong> {{user.username}} </strong> <br> it's your RentList</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+  {% include "common/alerts.html" %}
+<section class="dash-body bg-dark">
+<div>
+{% if interested_machinery_details %}  
+    <h1 class="text-center text-white py-3">Here Are Your Requested Machinery List : </h1>
+    <br>
+    <table class="table container table-secondary table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Machinery name</th>
+              <th>Confirm Or Not</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in interested_machinery_details %}
+            <tr>
+              <td>{{ i.product_name }}</td>
+              <td>  
+                {% if i.confirm %}   
+                <p class="text-success"> <strong> <i class="fa fa-check-square-o" aria-hidden="true"></i> We Confirm you
+                    Request.<br> You will get your machinery very Soon </strong></p>   
+                {% else %}   
+                <p class="text-danger"> <strong> <i class="fa fa-times" aria-hidden="true"></i> Not Yet Confirm </strong>
+                </p>   
+                {% endif %}  
+              </td>   
+            </tr> 
+            {% endfor %}   
+          </tbody>
+        </table> 
+        {% else %}  
+        <h1>you have not requested any things</h1>  
+        {% endif %}
+
+      </div>
+</section>
+
+
+{% endblock body %}

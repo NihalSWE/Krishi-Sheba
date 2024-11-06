@@ -1,0 +1,62 @@
+{% extends "Pages/base.html" %}
+
+{% load static %}
+{% block title %}Machinery Item{% endblock title %}
+{% block body %}
+<!-- Payment Info Section -->
+<div class="container my-5">
+    <div class="row">
+     <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+        <img src="{% static 'images/Pay1.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+     </div>
+     <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+         <img src="{% static 'images/Pay2.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+     </div>
+     <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+         <img src="{% static 'images/Pay3.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+     </div>
+     <div class="col-sm-3">
+        <div class="card mb-3">
+          <div class="card-body">
+           <img src="{% static 'images/Pay1.jpg' %}" alt="" srcset="" class="img-fluid">
+          </div>
+        </div>
+       </div>
+    </div>
+   </div>
+   <!-- End Payment Info Section -->
+
+
+
+<div class="machines m-3">
+    <h2 class="text-center fw-bold">Machines</h2>
+    <!-- Slider 1 -->
+    <div class="owl-carousel" id="slider1">
+            
+            {% for True in machines %}
+            
+        <a href="{% url 'machinery-detail' True.id %}" class="btn">
+            <div class="item"><img src="{{True.product_image.url}}" alt="" height="200px"><span
+                    class=" text-light">{{True.title}}</span><br><span class="fs-5  text-light">TK. {{True.rent_perday}}</span></div>
+        </a>
+         {% endfor %}
+    </div>
+</div>
+
+<hr>
+
+
+  
+{% endblock body %}

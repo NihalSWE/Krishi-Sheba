@@ -1,0 +1,51 @@
+{% extends 'Pages/base.html' %}
+{% load static %}
+{% block title %}Change Password{% endblock title %}
+
+
+{% block body %}
+
+<div class="container my-5">
+    <div class="row">
+    <h3> Welcome <strong>{{user.username}}</strong></h3>
+     <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+       <li class="d-grid"><a href="{% url 'profile' %}" class="btn btn-secondary">Change Password</a></li>
+      </ul>
+     </div>
+  
+     <div class="col-sm-8 offset-sm-1">
+      <div class="card-body text-dark">
+      <div class="p-3 bg-dark text-light">
+        <h3 class="text-center text-light">Change Password</h3>
+      </div>
+      
+      <form action=" " method='POST' novalidate class="shadow-sm p-5">
+        {% include "common/alerts.html" %}   
+        {% csrf_token %}
+                  
+        {% for fm in form %}
+          <div class="form-group">
+            {{fm.label_tag}} {{fm}}
+            <small class="text-danger">{{fm.errors|striptags}}</small><br>
+          </div>
+        {% endfor %}
+        
+        {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+            <p class="alert alert-danger my-3">{{error}}</p>
+          {% endfor %}
+        {% endif %}  
+        <input type="submit" class="btn btn-secondary mt-4 btn-block" value="Save">
+        {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+            <p class="alert alert-danger my-3">{{error}}</p>
+          {% endfor %}
+        {% endif %}  
+      </form>
+    </div>
+     </div>
+    </div>
+</div>
+
+{% endblock body %}
