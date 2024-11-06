@@ -1,0 +1,156 @@
+{% extends "Pages/base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+
+{% block body %}
+<section class="products-section py-5 bg-light">
+    <div class="container">
+
+        <!-- Page Title -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Explore Our Premium Products</h1>
+            <p class="lead text-muted">Discover the best seeds, pesticides, and fertilizers to boost your agricultural productivity.</p>
+        </div>
+
+        <!-- Seeds Section -->
+        <div class="category-section mb-5">
+            <h2 class="text-center text-primary mb-4">Seeds</h2>
+            <div class="owl-carousel owl-theme" id="slider1">
+                {% for s in products.S %}
+                    <div class="item">
+                        <a href="{% url 'product_detail' s.id %}" class="product-card text-decoration-none">
+                            <div class="card shadow-lg border-0 rounded">
+                                <img src="{{ s.product_image.url }}" alt="{{ s.title }}" class="card-img-top rounded-3" height="250px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ s.title }}</h5>
+                                    <p class="card-text text-primary fw-bold">TK. {{ s.selling_price }}</p>
+                                    <button class="btn btn-outline-primary w-100">View Details</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Pesticides Section -->
+        <div class="category-section mb-5">
+            <h2 class="text-center text-success mb-4">Pesticides</h2>
+            <div class="owl-carousel owl-theme" id="slider2">
+                {% for p in products.P %}
+                    <div class="item">
+                        <a href="{% url 'product_detail' p.id %}" class="product-card text-decoration-none">
+                            <div class="card shadow-lg border-0 rounded">
+                                <img src="{{ p.product_image.url }}" alt="{{ p.title }}" class="card-img-top rounded-3" height="250px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ p.title }}</h5>
+                                    <p class="card-text text-success fw-bold">TK. {{ p.selling_price }}</p>
+                                    <button class="btn btn-outline-success w-100">View Details</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Fertilizers Section -->
+        <div class="category-section mb-5">
+            <h2 class="text-center text-warning mb-4">Fertilizers</h2>
+            <div class="owl-carousel owl-theme" id="slider3">
+                {% for f in products.F %}
+                    <div class="item">
+                        <a href="{% url 'product_detail' f.id %}" class="product-card text-decoration-none">
+                            <div class="card shadow-lg border-0 rounded">
+                                <img src="{{ f.product_image.url }}" alt="{{ f.title }}" class="card-img-top rounded-3" height="250px">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{ f.title }}</h5>
+                                    <p class="card-text text-warning fw-bold">TK. {{ f.selling_price }}</p>
+                                    <button class="btn btn-outline-warning w-100">View Details</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+
+<style>
+  /* Add smooth hover effect for the product card */
+  .product-card .card {
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+  }
+
+  .product-card .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Card button styles */
+  .product-card .card button {
+      transition: background-color 0.3s, color 0.3s;
+  }
+
+  .product-card .card button:hover {
+      background-color: #0056b3;
+      color: white;
+  }
+
+  /* Style for the owl carousel */
+  .owl-carousel .item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  /* Adjust carousel items on smaller screens */
+  @media (max-width: 768px) {
+      .owl-carousel .item {
+          margin: 10px;
+      }
+  }
+
+  /* Customize owl carousel navigation */
+  .owl-nav .owl-prev, .owl-nav .owl-next {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border-radius: 50%;
+      font-size: 18px;
+      padding: 10px;
+  }
+
+  .owl-nav .owl-prev:hover, .owl-nav .owl-next:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // Initialize Owl Carousels
+    $("#slider1, #slider2, #slider3").owlCarousel({
+      items: 4,
+      loop: true,
+      margin: 20,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: true,
+      nav: true,
+      navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+      responsive: {
+        0: { items: 1 },
+        768: { items: 2 },
+        992: { items: 3 },
+        1200: { items: 4 }
+      }
+    });
+  });
+</script>

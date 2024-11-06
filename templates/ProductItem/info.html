@@ -1,0 +1,156 @@
+{% extends 'Pages/base.html' %}
+{% load static %}
+{% block title %}Agricultural Information{% endblock title %}
+
+{% block body %}
+<section class="dash-heading py-5 text-dark">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h1 class="display-4 font-weight-bold text-primary mb-3">Agricultural Information</h1>
+                <p class="lead text-muted">Explore useful agricultural resources and up-to-date information for farmers and enthusiasts.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <!-- Veterinary Section -->
+    <section id="veterinary">
+        <h3 class="text-center font-weight-bold mb-4 text-dark">Veterinary</h3>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg">
+                    <div class="card-body p-4">
+                        <h4><a href="https://www.petzonebd.com/veterinarian-pet-doctor-dhaka/" class="text-decoration-none link-hover">1. Vet & Animal Doctors List & Contacts in Bangladesh</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paddy Section -->
+    <section id="paddy">
+        <h3 class="text-center font-weight-bold mb-4 text-dark">Paddy</h3>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg">
+                    <div class="card-body p-4">
+                        <h4><a href="https://bn.wikipedia.org/wiki/%E0%A6%A7%E0%A6%BE%E0%A6%A8" class="text-decoration-none link-hover">1. Everything About Paddy</a></h4>
+                        <h4><a href="http://www.brri.gov.bd/site/page/bd9bd45c-af5e-423d-b370-21ec38997e14/-" class="text-decoration-none link-hover">2. District-based Success in Paddy</a></h4>
+                        <h4><a href="http://www.brri.gov.bd/site/page/c23e09bb-b34a-4e78-916a-a124196dc3e8" class="text-decoration-none link-hover">3. Rice Variety 1980-2022</a></h4>
+                        <h4><a href="https://www.bamis.gov.bd/thresholds/1/all/76" class="text-decoration-none link-hover">4. Crop Weather Information</a></h4>
+                        <h4><a href="https://iubat.edu/iaas/dhan2.html" class="text-decoration-none link-hover">5. Improved Method of Paddy Cultivation</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wheat Section -->
+    <section id="wheat">
+        <h3 class="text-center font-weight-bold mb-4 text-dark">Wheat</h3>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-lg">
+                    <div class="card-body p-4">
+                        <h4><a href="https://plantix.net/bn/library/crops/wheat" class="text-decoration-none link-hover">1. Everything About Wheat</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    /* Body Styling */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Heading Styles */
+    .dash-heading h1 {
+        font-weight: 700;
+        font-size: 3.5rem;
+        letter-spacing: 0.5px;
+        color: #2c3e50;
+    }
+
+    .dash-heading p {
+        font-size: 1.25rem;
+        color: #7f8c8d;
+    }
+
+    /* Section Title Styling */
+    h3 {
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Card Styling */
+    .card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .card-body h4 a {
+        color: #2980b9;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .card-body h4 a:hover {
+        color: #c0392b;
+        text-decoration: underline;
+    }
+
+    /* Link Hover Effect */
+    .link-hover {
+        color: #2980b9;
+        font-weight: 500;
+    }
+
+    .link-hover:hover {
+        color: #c0392b;
+        text-decoration: underline;
+    }
+
+    /* Padding & Spacing */
+    .card-body {
+        padding: 2rem;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    .row {
+        margin-bottom: 2rem;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        .dash-heading h1 {
+            font-size: 2.5rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+{% endblock body %}

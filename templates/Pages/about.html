@@ -1,0 +1,138 @@
+{% extends "Pages/base.html" %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+
+{% block body %}
+
+<!-- Hero Section -->
+<section class="about-hero bg-gradient text-light py-5">
+    <div class="container text-center">
+        <h1 class="display-3 fw-bold mb-3">About Our Farm</h1>
+        <p class="lead">Learn more about our commitment to sustainable farming and quality produce.</p>
+    </div>
+</section>
+
+<!-- About Content Section -->
+<section class="about-content py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- About Text -->
+            <div class="col-lg-10 text-center mb-5">
+                <h2 class="mb-4 fw-bold text-primary">Our Mission</h2>
+                <p class="text-muted fs-5">At our farm, we dedicate ourselves to delivering the finest quality products through sustainable practices. We prioritize environmental stewardship, transparency, and outstanding service.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %} <!-- Team Section -->
+<section class="our-team bg-dark text-light py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold pb-4">Meet the Team</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 text-center mb-4">
+                <div class="card team-card border-0 shadow-sm">
+                    <img src="{% static 'images/Nihal.jpg' %}" class="rounded-circle mx-auto mb-3 team-img" alt="CEO">
+                    <h4 class="text-primary">Md. Mahamudur Rahman Nihal</h4>
+                    <p class="fw-semibold text-muted">CEO</p>
+                    <p>BSc in Software Engineering</p>
+                    <p>Daffodil International University</p>
+                </div>
+            </div>
+            <!-- Add additional team members here if needed -->
+        </div>
+    </div>
+</section> {% endcomment %}
+
+{% endblock body %}
+
+<style>
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Hero Section Styling */
+.about-hero {
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    padding: 100px 0;
+}
+.about-hero h1 {
+    color: #ffffff;
+    font-size: 3.5rem;
+    letter-spacing: 0.5px;
+}
+.about-hero p {
+    color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* About Content Section */
+.about-content h2 {
+    color: #0056b3;
+    font-size: 2.2rem;
+}
+.about-content p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Team Section */
+.our-team {
+    background-color: #2c2c2c;
+    padding: 80px 0;
+}
+.our-team h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+.our-team .team-card {
+    background-color: #444;
+    padding: 25px;
+    border-radius: 10px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.our-team .team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+.our-team .team-img {
+    width: 150px;
+    height: 150px;
+    border: 4px solid #007bff;
+    box-shadow: 0px 4px 12px rgba(0, 123, 255, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+.our-team .team-card:hover .team-img {
+    box-shadow: 0px 8px 20px rgba(0, 123, 255, 0.5);
+}
+.our-team h4 {
+    color: #007bff;
+    font-size: 1.5rem;
+}
+.our-team p {
+    color: #adb5bd;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .about-hero h1 {
+        font-size: 3rem;
+    }
+    .about-content h2, .our-team h2 {
+        font-size: 2rem;
+    }
+}
+@media (max-width: 768px) {
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+    .about-content p, .our-team p {
+        font-size: 1rem;
+    }
+}
+</style>

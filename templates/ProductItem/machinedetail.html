@@ -1,0 +1,206 @@
+{% extends 'Pages/base.html' %}
+{% load static %}
+{% block title %}Machine Detail{% endblock title %}
+
+{% block body %}
+<section class="product-detail-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Image Section -->
+            <div class="col-md-6 mb-4 mb-md-0 text-center">
+                <img src="{{ mproduct.product_image.url }}" alt="{{ mproduct.title }}" class="img-fluid product-image rounded shadow-lg">
+            </div>
+
+            <!-- Product Info Section -->
+            <div class="col-md-6">
+                <h2 class="product-title">{{ mproduct.title }}</h2>
+                <p class="product-description">{{ mproduct.description }}</p>
+                
+                <div class="product-price mt-3">
+                    <h4 class="text-primary">Rent Per Day: TK. {{ mproduct.rent_perday }}</h4>
+                </div>
+                
+                {% if user.is_authenticated %}
+                <div class="contact-btn mt-4">
+                    <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#getcar">Contact for Rent</button>
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-lg btn-warning mt-4 w-100">Login to Rent</a>
+                {% endif %}
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="getcar" tabindex="-1" role="dialog" aria-labelledby="getcarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="getcarLabel">Contacting Krishi Sheba</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-primary">
+                <form action="{% url 'machinery_contact' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ mproduct.id }}">
+                    {% if user.is_authenticated %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    {% else %}
+                    <input type="hidden" name="user_id" value="0">
+                    {% endif %}
+                    <h4 class="text-center text-primary fw-bold">We'd Love to Help!</h4>
+                    <div class="form-group">
+                        <label for="machine-name">Machinery Name:</label>
+                        <input type="text" name="mproduct" class="form-control" value="{{ mproduct.title }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" class="form-control" {% if user.is_authenticated %} value="{{ user.username }}" {% endif %} required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" class="form-control" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" name="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea name="message" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
+<style>
+/* General Page Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Product Detail Section */
+.product-detail-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+.product-price h4 {
+    font-size: 1.8rem;
+    color: #2980b9;
+}
+
+.offers {
+    margin-top: 30px;
+}
+
+.offers-title {
+    font-size: 1.5rem;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.offers-list {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.offers-list li {
+    margin-bottom: 8px;
+}
+
+.product-image {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #2980b9;
+    border-color: #2980b9;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1d6f99;
+    border-color: #1d6f99;
+}
+
+.btn-warning {
+    background-color: #f39c12;
+    border-color: #f39c12;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+    background-color: #e67e22;
+    border-color: #e67e22;
+}
+
+/* Modal */
+.modal-dialog-centered {
+    max-width: 500px;
+}
+
+.modal-content {
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 2px solid #2980b9;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-detail-section {
+        padding: 20px;
+    }
+    .product-title {
+        font-size: 2rem;
+    }
+    .product-description {
+        font-size: 1rem;
+    }
+    .product-image {
+        max-height: 250px;
+    }
+}
+</style>

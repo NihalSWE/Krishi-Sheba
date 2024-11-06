@@ -1,0 +1,58 @@
+{% extends 'Pages/base.html' %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="container my-5">
+    <!-- Display Success Message -->
+    {% if messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                <strong>{{ message }}</strong>
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+    
+    <!-- Contact Form -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Get in Touch</h1>
+                    <p class="text-center text-muted">Have questions? Fill out the form, and we'll get back to you shortly.</p>
+
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+    .card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: all 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+{% endblock body %}

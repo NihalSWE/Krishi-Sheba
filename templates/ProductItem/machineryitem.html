@@ -1,0 +1,208 @@
+{% extends "Pages/base.html" %}
+{% load static %}
+
+{% block title %}Machinery Items{% endblock title %}
+{% block body %}
+
+<!-- Machines Section -->
+<section class="machines py-5">
+    <div class="container">
+        <h2 class="text-center text-dark font-weight-bold mb-5">Available Machines</h2>
+
+        <!-- Machines Grid -->
+        <div class="row">
+            {% for machine in page_obj %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <a href="{% url 'machinery-detail' machine.id %}" class="machine-card">
+                    <div class="machine-card-body">
+                        <img src="{{ machine.product_image.url }}" alt="{{ machine.title }}" class="img-fluid rounded mb-4">
+                        <h5 class="text-center machine-title">{{ machine.title }}</h5>
+                        <p class="text-center text-primary">Rent Per Day: TK. {{ machine.rent_perday }}</p>
+                        <button class="btn btn-primary d-block mx-auto">View Details</button>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-controls text-center mt-4">
+            <span class="pagination-text">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="btn btn-outline-primary">First</a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-primary">Previous</a>
+                {% endif %}
+
+                <span class="current-page btn btn-outline-primary">{{ page_obj.number }}</span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary">Next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary">Last</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
+
+<style>
+  /* General Styles */
+  body {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+  }
+  
+  /* Section Styles */
+  .machines {
+      padding: 50px 0;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+  }
+  
+  h2 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+  }
+  
+  /* Machine Card Styles */
+  .machine-card {
+      display: block;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      transition: all 0.3s ease-in-out;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+  }
+  
+  .machine-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .machine-card-body {
+      text-align: center;
+  }
+  
+  /* Set fixed size for images */
+  .machine-card-body img {
+      width: 100%;  /* Make sure it takes full width of the parent container */
+      height: 220px; /* Fixed height */
+      object-fit: cover;  /* Ensures the image maintains aspect ratio while covering the area */
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+  }
+  
+  .machine-card-body img:hover {
+      transform: scale(1.05);
+  }
+  
+  .machine-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-top: 15px;
+      transition: color 0.3s ease;
+  }
+  
+  .machine-title:hover {
+      color: #2980b9;
+  }
+  
+  .machine-card p {
+      font-size: 1.1rem;
+      color: #2980b9;
+      margin-top: 5px;
+      transition: color 0.3s ease;
+  }
+  
+  .machine-card p:hover {
+      color: #1d6f99;
+  }
+  
+  .btn {
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-primary {
+      background-color: #2980b9;
+      border: none;
+  }
+  
+  .btn-primary:hover {
+      background-color: #1d6f99;
+      transform: translateY(-2px);
+  }
+  
+  /* Pagination Controls */
+  .pagination-controls {
+      margin-top: 30px;
+      text-align: center;
+  }
+  
+  .pagination-text {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 15px;
+  }
+  
+  .pagination a,
+  .pagination span {
+      font-size: 1.1rem;
+      padding: 10px 18px;
+      margin: 0 8px;
+      border-radius: 50px;
+      text-decoration: none;
+      background-color: #f1f1f1;
+      color: #2980b9;
+      transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .pagination a:hover {
+      background-color: #2980b9;
+      color: #fff;
+  }
+  
+  .pagination .current-page {
+      background-color: #2980b9;
+      color: #fff;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+      h2 {
+          font-size: 2rem;
+      }
+  
+      .machine-card-body img {
+          max-height: 180px; /* Reduce image height on smaller screens */
+      }
+  
+      .btn {
+          font-size: 1rem;
+          padding: 8px 16px;
+      }
+  
+      .pagination {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+      }
+  }
+  
+</style>
