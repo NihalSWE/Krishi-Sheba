@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 # Create your views here.
 class ProductView(View):
+<<<<<<< HEAD
     def get(self, request):
         # Define categories and initialize empty dictionary for paginated products
         categories = ['S', 'P', 'F']
@@ -25,6 +26,14 @@ class ProductView(View):
         return render(request, 'ProductItem/seedingitem.html', {'products': paginated_products})
     
     
+=======
+    def get(self,request):
+        seeds=Product.objects.filter(category='S')
+        pesticides=Product.objects.filter(category='P')
+        fertilizers=Product.objects.filter(category='F')
+        return render(request,'ProductItem/seedingitem.html',{'seeds':seeds,'pesticides':pesticides,'fertilizers':fertilizers})
+
+>>>>>>> origin/master
 class ProductDetailView(View):
     def get(self,request,pk):
         product=Product.objects.get(pk=pk)
@@ -163,6 +172,7 @@ def orders(request):
 
 
 # from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
+<<<<<<< HEAD
 
 from django.core.paginator import Paginator
 
@@ -174,6 +184,13 @@ class MachineryView(View):
         page_obj = paginator.get_page(page_number)
         return render(request, 'ProductItem/machineryitem.html', {'page_obj': page_obj})
     
+=======
+class MachineryView(View):
+    def get(self,request):
+        machines=Machinery.objects.filter(is_Available=True)
+        return render(request,'ProductItem/machineryitem.html',{'machines':machines})
+
+>>>>>>> origin/master
 
 class MachineryDetailView(View):
     def get(self,request,pk):

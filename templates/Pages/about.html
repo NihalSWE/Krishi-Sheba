@@ -1,4 +1,5 @@
 {% extends "Pages/base.html" %}
+<<<<<<< HEAD
 {% load static %}
 {% block title %}About Us{% endblock %}
 
@@ -136,3 +137,76 @@ body {
     }
 }
 </style>
+=======
+
+{% load static %}
+{% block title %}About{% endblock title %}
+{% block body %} 
+
+<div class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2> About Farm</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="myCarousel" class="carousel slide about_Carousel " data-ride="carousel">
+                    
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="carousel-caption ">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="test_box">
+                                                <i><img src="{% static 'images/Nihal.jpg' %}" alt="#" /></i>
+                                                <h4>Nihal</h4>
+                                                <p>It is a long established fact that a reader will be distracted by the
+                                                    readable content of a page when looking at its layout. The point of
+                                                    using Lorem Ipsum is that it has a more-or-less normal distribution
+                                                    of letters,It is a long established fact that a reader will be
+                                                    distracted by the readable content of a page when looking at its
+                                                    layout. The point of using Lorem Ipsum is that it has a more-or-less
+                                                    normal distribution of letters,It is a long established fact that a
+                                                    reader will be distracted by the readable content of a page when
+                                                    looking at its layout. The point of using Lorem Ipsum is that it has
+                                                    a more-or-less normal distribution of letters,</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="our-team bg-dark">
+    <div class="container">  
+      <div class="section-tittle">   
+          <h1 class="content-tittle text-center py-4 text-light">MY SELF</h1>   
+      </div>
+    <div class="row">  
+    <div class="col-sm-12 col-md-6 col-lg-4 pb-5">   
+      <img class="img-center rounded-circle pb-1"src="{% static 'images/Nihal.jpg' %}" alt="" style="width: 300px;height: 300px;">
+    </div>  
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <h4 class="sub-tittle text-center pt-3 text-light">CEO</h4>
+      <p class="text-center text-light">Md.Mahamudur Rahman Nihal</p>
+      <p class="text-center text-light">Bsc In Software Engineering</p>
+      <p class="text-center text-light">Daffodil International University</p>     
+    </div>   
+    </div>
+    </div>   
+    </div>
+{% endblock body %}
+>>>>>>> origin/master

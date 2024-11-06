@@ -44,7 +44,11 @@ INSTALLED_APPS = [
     'Accounts',
     'Contact',
     'crispy_forms', 
+<<<<<<< HEAD
     'crispy_bootstrap5',  
+=======
+    # 'multiselectfield',
+>>>>>>> origin/master
 ]
 
 MIDDLEWARE = [
@@ -152,7 +156,11 @@ EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 #     }
 # JAZZMIN_UI_TWEAKS = {
 #     "brand_small_text": True
+<<<<<<< HEAD
 # }
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+=======
+# }
+>>>>>>> origin/master

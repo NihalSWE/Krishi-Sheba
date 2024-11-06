@@ -342,10 +342,17 @@ ul.btn li:last-child {
 }
 
 .navbar-brand_h3 {
+<<<<<<< HEAD
      color: whitesmoke;
      font-style: normal;
      font-weight: bold;
 
+=======
+  color: whitesmoke;
+  font-style: normal;
+  font-weight: bold;
+  
+>>>>>>> origin/master
 
 }
 
@@ -375,7 +382,11 @@ ul.btn li:last-child {
 
 .header {
      width: 100%;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/master
      padding: 30px 30px;
      border-bottom: #c6cad5 solid 12px;
      background-color: #13110e;
@@ -388,7 +399,11 @@ ul.btn li:last-child {
 }
 
 .logo::after {
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin/master
      position: absolute;
      content: "";
      width: 136px;
@@ -398,7 +413,11 @@ ul.btn li:last-child {
      background: url(../images/headerpic.png);
      border-right: 15px solid #c6cad5;
      background-repeat: no-repeat;
+<<<<<<< HEAD
 
+=======
+     
+>>>>>>> origin/master
 }
 
 .logo img {
@@ -416,7 +435,11 @@ ul.btn li:last-child {
 
 
 .banner_main {
+<<<<<<< HEAD
      background-image: url(../images/Banner2.jpg);
+=======
+     background-image : url(../images/Banner2.jpg);
+>>>>>>> origin/master
      /* background : blue; */
      background-repeat: no-repeat;
      min-height: 840px;
@@ -768,13 +791,20 @@ ul.btn li:last-child {
      background-size: 100% 100%;
      min-height: 367px;
 }
+<<<<<<< HEAD
 
 .test_box img {
+=======
+.test_box img{
+>>>>>>> origin/master
      height: 169px;
      width: 169px;
      border-radius: 100%;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 .about_Carousel .test_box h4 {
      font-size: 30px;
      color: #1d1c1c;
@@ -851,18 +881,29 @@ ul.btn li:last-child {
 .copyright {
      margin-top: 70px;
      padding: 20px 0px;
+<<<<<<< HEAD
      background-color: yellowgreen;
 }
 
 .footer_h3 {
+=======
+     background-color:yellowgreen;
+}
+
+.footer_h3{
+>>>>>>> origin/master
      color: #fff;
      font-size: 18px;
      line-height: 22px;
      text-align: center;
 
 }
+<<<<<<< HEAD
 
 .footer_P {
+=======
+.footer_P{
+>>>>>>> origin/master
      color: #fff;
      font-size: 18px;
      line-height: 22px;
@@ -896,6 +937,7 @@ ul.btn li:last-child {
 
 
 
+<<<<<<< HEAD
 .owl-carousel .item {
      /* border: 1px solid black; */
      font-size: 24px;
@@ -921,3 +963,45 @@ ul.btn li:last-child {
      font-size: 24px;
      font-weight: bold;
 }
+=======
+.owl-carousel .item{
+     /* border: 1px solid black; */
+     font-size: 24px;
+     text-align: center;
+     margin-top: 20px;;
+    }
+    
+    .owl-next{
+     float:right;
+    }
+    .owl-prev{
+     float:left;
+    }
+    .owl-prev span{
+     font-size: 24px;
+     font-weight: bold;
+    }
+    .owl-next span{
+     font-size: 24px;
+     font-weight: bold;
+    }
+  
+    
+.seeds{
+     /* background: linear-gradient(to bottom, #00ff00 0%, #ffff00 100%); */
+     background: url(../images/SB.jpg);
+}
+
+.pesticides{
+     background: url(../images/PB.jpg);
+}
+
+.fertilizers{
+     background: url(../images/FB.jpg); 
+}
+
+.machines{
+     background: url(../images/MB.jpg);
+     
+}
+>>>>>>> origin/master

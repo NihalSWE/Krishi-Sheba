@@ -1,5 +1,6 @@
 {% extends 'Pages/base.html' %}
 
+<<<<<<< HEAD
 {% block title %}Contact Us{% endblock title %}
 
 {% block body %}
@@ -56,3 +57,31 @@
     }
 </style>
 {% endblock body %}
+=======
+{% block title %}Contact{% endblock title %}
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="container">
+  <div class="col-md-6 offset-md-3">
+
+    <h1 class="text-center">Contact Please</h1>
+
+    <form  method='POST'>
+
+        {% csrf_token %}
+
+        {{form |crispy}}
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+  
+  
+
+</div>
+<div>
+
+</div> 
+{% endblock body %}
+    
+>>>>>>> origin/master
