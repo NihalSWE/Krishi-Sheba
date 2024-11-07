@@ -2,57 +2,112 @@
 {% load static %}
 {% block title %}Product Detail{% endblock title %}
 
-
 {% block body %}
-    
 <div class="container my-5">
-  <div class="row">
-   <div class="col-sm-6 text-center align-self-center">
-    <img src="{{product.product_image.url}}" alt="" class="img-fluid img-thumbnail">
-   </div>
-   <div class="col-sm-5 offset-sm-1">
-    <h2>Product Title: {{product.title}}</h2>
-    <hr>
-    <p>{{product.description}}</p> <br>
-    <h4>TK. {{product.selling_price}}</h4> <br>
+    <div class="row g-5">
+        <!-- Product Image Section -->
+        <div class="col-lg-6">
+            <div class="position-sticky" style="top: 2rem;">
+                <div class="product-image-container bg-light rounded-4 p-4 text-center">
+                    <img src="{{product.product_image.url}}" alt="{{product.title}}" 
+                         class="img-fluid rounded-3 shadow-sm" 
+                         style="max-height: 500px; object-fit: contain;">
+                </div>
+            </div>
+        </div>
 
-      {% if request.user.is_authenticated %}
-      {% if item_already_in_cart %}
-        <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 ms-4 d-inline">Go to Cart</a>
+        <!-- Product Details Section -->
+        <div class="col-lg-6">
+            <div class="product-details">
+                <!-- Product Title -->
+                <h1 class="fw-bold mb-4">{{product.title}}</h1>
+                
+                <!-- Price Section -->
+                <div class="price-section mb-4">
+                    <h2 class="fw-bold text-primary mb-2">TK. {{product.selling_price}}</h2>
+                    <span class="badge bg-success">In Stock</span>
+                </div>
 
-      {% else %}
-    
-        <form action="/ProductItem/add-to-cart" class="d-inline">
-          <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
-          <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
-        </form>
-        {% endif %}
-        {% endif %}
+                <!-- Description -->
+                <div class="description mb-4">
+                    <p class="lead text-muted">{{product.description}}</p>
+                </div>
 
-        
-        {% if not request.user.is_authenticated %}
-        <form action="/ProductItem/add-to-cart" class="d-inline">
-          <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
-          <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
-        </form>
-        {% endif %}
-          
+                <!-- Action Buttons -->
+                <div class="d-grid gap-3 d-md-flex mb-5">
+                    {% if request.user.is_authenticated %}
+                        {% if item_already_in_cart %}
+                            <a href="{% url 'showcart' %}" 
+                               class="btn btn-warning btn-lg flex-grow-1">
+                                <i class="fas fa-shopping-cart me-2"></i>Go to Cart
+                            </a>
+                        {% else %}
+                            <form action="/ProductItem/add-to-cart" class="flex-grow-1">
+                                <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
 
+                    {% if not request.user.is_authenticated %}
+                        <form action="/ProductItem/add-to-cart" class="flex-grow-1">
+                            <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                            </button>
+                        </form>
+                    {% endif %}
 
-    <a href="{% url 'showcart' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
-    <h5 class="mt-5">Available Offers</h5>
-    <ul>
-     <li>Bank Offer 5% Unlimited Cashback on Abc Bank Credit</li>
-     <li>Special Price Get extra Tk300 off (price inclusive of discount)</li>
-     <li>No cost EMI Tk1,667/month. Standard EMI also available</li>
-     <li>Partner Offer Tk2000  Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</li>
-    </ul>
-   </div>
-  </div>
- </div>
+                    <a href="{% url 'showcart' %}" class="btn btn-danger btn-lg flex-grow-1">
+                        <i class="fas fa-bolt me-2"></i>Buy Now
+                    </a>
+                </div>
 
+                <!-- Offers Section -->
+                <div class="offers-section p-4 bg-light rounded-3">
+                    <h4 class="fw-bold mb-4">
+                        <i class="fas fa-gift text-primary me-2"></i>Available Offers
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
+                            <span>Bank Offer 5% Unlimited Cashback on Abc Bank Credit</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
+                            <span>Special Price Get extra Tk300 off (price inclusive of discount)</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
+                            <span>No cost EMI Tk1,667/month. Standard EMI also available</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fas fa-check-circle text-success me-2 mt-1"></i>
+                            <span>Partner Offer Tk2000 Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-
+<!-- Add this to your base template if not already present -->
+<style>
+    .product-image-container {
+        transition: transform 0.3s ease;
+    }
+    .product-image-container:hover {
+        transform: scale(1.02);
+    }
+    .btn {
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+</style>
 {% endblock body %}
-    

@@ -1,72 +1,233 @@
 {% extends "Pages/base.html" %}
-
 {% load static %}
 {% block title %}About{% endblock title %}
-{% block body %} 
 
-<div class="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="titlepage">
-                    <h2> About Farm</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="myCarousel" class="carousel slide about_Carousel " data-ride="carousel">
-                    
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="container">
-                                <div class="carousel-caption ">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="test_box">
-                                                <i><img src="{% static 'images/Nihal.jpg' %}" alt="#" /></i>
-                                                <h4>Nihal</h4>
-                                                <p>It is a long established fact that a reader will be distracted by the
-                                                    readable content of a page when looking at its layout. The point of
-                                                    using Lorem Ipsum is that it has a more-or-less normal distribution
-                                                    of letters,It is a long established fact that a reader will be
-                                                    distracted by the readable content of a page when looking at its
-                                                    layout. The point of using Lorem Ipsum is that it has a more-or-less
-                                                    normal distribution of letters,It is a long established fact that a
-                                                    reader will be distracted by the readable content of a page when
-                                                    looking at its layout. The point of using Lorem Ipsum is that it has
-                                                    a more-or-less normal distribution of letters,</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{% block body %}
+<!-- Hero Section with Parallax Effect -->
+<section class="hero-section position-relative overflow-hidden">
+    <div class="parallax-bg"></div>
+    <div class="hero-content py-6">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-text p-4 bg-white bg-opacity-95 rounded-5 shadow-lg">
+                        <span class="badge bg-primary px-3 py-2 mb-3">Welcome to Our Farm</span>
+                        <h1 class="display-4 fw-bold mb-4 text-gradient">About Our Farm</h1>
+                        <div class="animated-bar"></div>
+                        <p class="lead mb-4">Pioneering sustainable farming practices while delivering premium quality produce to your table.</p>
+                        <div class="d-flex gap-3">
+                            <div class="stat-box text-center p-3 rounded-4 bg-light">
+                                <i class="bi bi-tree text-primary fs-3"></i>
+                                <h5 class="mt-2 mb-0">100+ Acres</h5>
+                                <small class="text-muted">Farmland</small>
+                            </div>
+                            <div class="stat-box text-center p-3 rounded-4 bg-light">
+                                <i class="bi bi-people text-primary fs-3"></i>
+                                <h5 class="mt-2 mb-0">50+</h5>
+                                <small class="text-muted">Team Members</small>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="image-stack">
+                        {% comment %} <img src="{% static 'images/farm-hero.jpg' %}" alt="Farm View" 
+                             class="img-fluid rounded-5 shadow-lg main-image"> {% endcomment %}
+                        <div class="floating-card bg-white p-3 rounded-4 shadow-lg">
+                            <i class="bi bi-award-fill text-primary"></i>
+                            <span class="ms-2">Certified Organic</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<!-- Founder's Message with Modern Design -->
+<section class="founder-message py-6 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-xl rounded-5 overflow-hidden hover-card">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-md-4 position-relative bg-primary bg-gradient p-4">
+                                <div class="text-center text-white">
+                                    <div class="avatar-container mb-4">
+                                        <img src="{% static 'images/Nihal.jpg' %}" alt="Nihal" 
+                                             class="rounded-circle img-fluid border border-5 border-white shadow">
+                                        <span class="status-badge bg-success"></span>
+                                    </div>
+                                    <h4 class="fw-bold mb-2">Md. Mahamudur Rahman Nihal</h4>
+                                    <p class="mb-3 opacity-75">Founder & CEO</p>
+                                    <div class="social-links d-flex justify-content-center gap-3">
+                                        <a href="#" class="btn btn-light btn-sm rounded-circle">
+                                            <i class="bi bi-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-light btn-sm rounded-circle">
+                                            <i class="bi bi-twitter"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-light btn-sm rounded-circle">
+                                            <i class="bi bi-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="p-5">
+                                    <div class="quote-card mb-4 p-3 bg-light rounded-4">
+                                        <i class="bi bi-quote text-primary fs-1 d-block mb-2"></i>
+                                        <p class="lead mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+                                    </div>
+                                    <div class="credentials mt-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <i class="bi bi-mortarboard text-primary me-2"></i>
+                                            <span>BSc in Software Engineering</span>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-buildings text-primary me-2"></i>
+                                            <span>Daffodil International University</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="our-team bg-dark">
-    <div class="container">  
-      <div class="section-tittle">   
-          <h1 class="content-tittle text-center py-4 text-light">MY SELF</h1>   
-      </div>
-    <div class="row">  
-    <div class="col-sm-12 col-md-6 col-lg-4 pb-5">   
-      <img class="img-center rounded-circle pb-1"src="{% static 'images/Nihal.jpg' %}" alt="" style="width: 300px;height: 300px;">
-    </div>  
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <h4 class="sub-tittle text-center pt-3 text-light">CEO</h4>
-      <p class="text-center text-light">Md.Mahamudur Rahman Nihal</p>
-      <p class="text-center text-light">Bsc In Software Engineering</p>
-      <p class="text-center text-light">Daffodil International University</p>     
-    </div>   
-    </div>
-    </div>   
-    </div>
+<!-- Enhanced Custom CSS -->
+<style>
+    /* Import Bootstrap Icons */
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+    /* Custom Variables */
+    :root {
+        --primary-color: #0d6efd;
+        --secondary-color: #6c757d;
+        --transition: all 0.3s ease;
+    }
+
+    /* Utility Classes */
+    .py-6 { padding-top: 5rem; padding-bottom: 5rem; }
+    
+    /* Text Gradient */
+    .text-gradient {
+        background: linear-gradient(45deg, var(--primary-color), #0099ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Parallax Effect */
+    .parallax-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #f8f9fa 0%, #e9ecef 100%);
+        z-index: 0;
+    }
+
+    /* Animated Bar */
+    .animated-bar {
+        width: 100px;
+        height: 4px;
+        background: var(--primary-color);
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .animated-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        animation: shine 2s infinite;
+    }
+
+    /* Image Stack */
+    .image-stack {
+        position: relative;
+    }
+
+    .main-image {
+        transform: perspective(1000px) rotateY(-5deg);
+        transition: var(--transition);
+    }
+
+    .floating-card {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Avatar Container */
+    .avatar-container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    .avatar-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .status-badge {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    /* Hover Effects */
+    .hover-card {
+        transition: var(--transition);
+    }
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .stat-box {
+        transition: var(--transition);
+    }
+
+    .stat-box:hover {
+        transform: translateY(-3px);
+        background: white !important;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes shine {
+        to { left: 100%; }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .hero-content { padding: 3rem 0; }
+        .floating-card { display: none; }
+        .main-image { transform: none; }
+    }
+</style>
 {% endblock body %}
