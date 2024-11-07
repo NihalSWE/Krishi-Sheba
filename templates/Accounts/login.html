@@ -1,47 +1,164 @@
 {% extends 'Pages/base.html' %}
 
 {% block title %}Login{% endblock title %}
-{% block body %}
- 
 
-<section  class=" login-bg py-5 ">
+{% block body %}
+<!-- Login Section -->
+<section class="login-section py-5">
     <div class="container">
-      <div class="row">        
-        <div class="col-md-6 mx-auto">
-          <div class="card">
-            <div class="p-3 bg-dark  text-light">
-              <h4 class="text-center text-light"> Login</h4>
-            </div>
-            <div class="card-body">
-                
-                <form action="{% url 'login' %}" method='POST'>   
-                  {% include "common/alerts.html" %}           
-                 {% csrf_token %}
-                  
-                  {% for fm in form %}
-                    <div class="form-group">
-                      {{fm.label_tag}} {{fm}}
-                      <small class="text-danger">{{fm.errors|striptags}}</small><br>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-12">
+                <!-- Card Container -->
+                <div class="card shadow-lg border-0 rounded-lg">
+                    <div class="card-header bg-dark text-light text-center py-4 rounded-top">
+                        <h3 class="fw-bold">Login</h3>
                     </div>
-                  {% endfor %}
-                  <!-- <small ><a href="{% url 'reset_password' %}">Forget Password ?</a></small><br> -->
-                  
-                  <div class="text-center text-primary fw-bold"><small>New to Krishi Sheba ? <a href="{% url 'register' %}"class="text-danger">Create an Account</a> </small></div>
-                  <input type="submit" value="Login" class="btn btn-secondary btn-block">
-                  {% if form.non_field_errors %}
-                    {% for error in form.non_field_errors %}
-                      <p class="alert alert-danger my-3">{{error}}</p>
-                    {% endfor %}
-                  {% endif %}  
-               </form>
+                    <div class="card-body p-4">
+
+                        <!-- Login Form -->
+                        <form action="{% url 'login' %}" method="POST">   
+                            {% csrf_token %}
+
+                            <!-- Form Alerts -->
+                            {% include "common/alerts.html" %}
+
+                            <!-- Form Fields Loop -->
+                            {% for fm in form %}
+                                <div class="form-group mb-3">
+                                    {{ fm.label_tag }}
+                                    {{ fm }}
+                                    <small class="text-danger">{{ fm.errors|striptags }}</small>
+                                </div>
+                            {% endfor %}
+
+                            <!-- Forgot Password Link -->
+                            <div class="text-end">
+                                <small><a href="{% url 'reset_password' %}" class="text-primary">Forgot Password?</a></small>
+                            </div>
+
+                            <!-- Account Creation Link -->
+                            <div class="text-center text-muted mt-4">
+                                <small>New to Krishi Sheba? <a href="{% url 'register' %}" class="text-danger">Create an Account</a></small>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-grid gap-2 mt-4">
+                                <input type="submit" value="Login" class="btn btn-secondary btn-lg">
+                            </div>
+
+                            <!-- Non-field Errors -->
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                    <p class="alert alert-danger my-3">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+                <!-- End of Card -->
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 {% endblock body %}
-    
 
+<!-- Custom Styling -->
+<style>
+    /* General Styling */
+    .login-section {
+        background: #f5f5f5;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Card Styling */
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    /* Card Header */
+    .card-header {
+        background-color: #343a40; /* Dark background */
+        color: #fff;
+        border-bottom: 1px solid #0056b3;
+        text-align: center;
+    }
+
+    /* Form Fields */
+    .form-group input, .form-group select, .form-group textarea {
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .form-group small {
+        font-size: 0.9rem;
+        color: #d9534f;
+    }
+
+    /* Submit Button */
+    .btn-secondary {
+        background-color: #6c757d; /* Greyish button */
+        border-color: #6c757d;
+        font-weight: 500;
+        padding: 12px 20px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    /* Links and Text */
+    .text-muted {
+        font-size: 0.9rem;
+    }
+
+    .text-primary {
+        color: #007bff !important;
+    }
+
+    .text-muted a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .text-muted a:hover {
+        text-decoration: underline;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 767px) {
+        .card {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .btn-secondary {
+            padding: 10px 15px;
+        }
+
+        .form-group input {
+            font-size: 0.9rem;
+        }
+    }
+
+</style>
 
