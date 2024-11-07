@@ -849,7 +849,7 @@ ul.btn li:last-child {
 .copyright {
      margin-top: 70px;
      padding: 20px 0px;
-     background-color:yellowgreen;
+     background-color:#343a40;
 }
 
 .footer_h3{
@@ -916,20 +916,3 @@ ul.btn li:last-child {
     }
   
     
-.seeds{
-     /* background: linear-gradient(to bottom, #00ff00 0%, #ffff00 100%); */
-     background: url(../images/SB.jpg);
-}
-
-.pesticides{
-     background: url(../images/PB.jpg);
-}
-
-.fertilizers{
-     background: url(../images/FB.jpg); 
-}
-
-.machines{
-     background: url(../images/MB.jpg);
-     
-}

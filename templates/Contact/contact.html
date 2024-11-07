@@ -1,28 +1,104 @@
 {% extends 'Pages/base.html' %}
 
-{% block title %}Contact{% endblock title %}
+{% block title %}Contact Us{% endblock title %}
 {% block body %}
 {% load crispy_forms_tags %}
+
+<!-- Styling and Animation (CSS) -->
+<style>
+    .contact-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+    .contact-container:hover {
+        transform: translateY(-5px);
+    }
+    .contact-header {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #495057;
+    }
+    .contact-form .form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 12px 15px;
+        transition: border-color 0.3s ease;
+    }
+    .contact-form .form-control:focus {
+        border-color: #007bff;
+        box-shadow: none;
+    }
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        font-weight: bold;
+        background-image: linear-gradient(90deg, #007bff, #5a9cff);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        transition: background-image 0.3s ease;
+    }
+    .btn-submit:hover {
+        background-image: linear-gradient(90deg, #5a9cff, #007bff);
+    }
+    .success-message {
+        display: none;
+        margin-top: 15px;
+        color: #28a745;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+
 <div class="container">
-  <div class="col-md-6 offset-md-3">
+    <div class="contact-container">
+        <h1 class="contact-header">Get in Touch</h1>
 
-    <h1 class="text-center">Contact Please</h1>
-
-    <form  method='POST'>
-
-        {% csrf_token %}
-
-        {{form |crispy}}
-          <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-  </div>
-  
-  
-
+        <form method="POST" class="contact-form" id="contactForm" data-ajax-url="{% url 'Contact' %}">
+            {% csrf_token %}
+            {{ form | crispy }}
+            
+            <button type="submit" class="btn btn-submit">Send Message</button>
+        </form>
+        
+        <!-- Success message -->
+        <div class="success-message" id="successMessage">Your message has been submitted successfully!</div>
+    </div>
 </div>
-<div>
 
-</div> 
+<!-- AJAX and Success Message Script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#contactForm').on('submit', function(event){
+            event.preventDefault();
+            var form = $(this);
+            var formData = form.serialize();
+            var ajaxUrl = form.data('ajax-url');
+            
+            $.ajax({
+                type: 'POST',
+                url: ajaxUrl,
+                data: formData,
+                success: function(response){
+                    if (response.success) {
+                        $('#successMessage').fadeIn().delay(3000).fadeOut();  // Show success message temporarily
+                        form[0].reset();  // Clear the form
+                    } else {
+                        alert('An error occurred. Please try again.');
+                    }
+                },
+                error: function(){
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    });
+</script>
+
 {% endblock body %}
-    

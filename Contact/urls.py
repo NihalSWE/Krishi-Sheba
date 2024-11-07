@@ -1,12 +1,6 @@
 from django.urls import path
-from django.views import View 
-from .views import ContactView
-from . import views
-# from .pdf import post_pdf
+from .views import ContactView  # Import the ContactView directly
 
 urlpatterns = [
-    
-
-    path('Contact/', views.Contact, name="Contact"),
-   
-] 
+    path('Contact/', ContactView.as_view(), name="Contact"),  # Use .as_view() for class-based views
+]
