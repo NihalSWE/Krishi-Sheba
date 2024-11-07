@@ -154,10 +154,19 @@ def orders(request):
 
 
 # from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
+from django.core.paginator import Paginator
 class MachineryView(View):
-    def get(self,request):
-        machines=Machinery.objects.filter(is_Available=True)
-        return render(request,'ProductItem/machineryitem.html',{'machines':machines})
+    def get(self, request):
+        # Fetch all available machinery items
+        machines = Machinery.objects.filter(is_Available=True)
+
+        # Set up pagination: 6 items per page
+        paginator = Paginator(machines, 6)  # 6 items per page
+        page_number = request.GET.get('page')  # Get the page number from the URL
+        page_obj = paginator.get_page(page_number)
+
+        # Render template with the paginated machines
+        return render(request, 'ProductItem/machineryitem.html', {'machines': page_obj})
 
 
 class MachineryDetailView(View):

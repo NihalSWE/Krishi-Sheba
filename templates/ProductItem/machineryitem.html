@@ -1,62 +1,133 @@
 {% extends "Pages/base.html" %}
-
 {% load static %}
-{% block title %}Machinery Item{% endblock title %}
+{% block title %}Machinery Items{% endblock title %}
+
 {% block body %}
-<!-- Payment Info Section -->
+<!-- Section for machinery items -->
 <div class="container my-5">
+    <h2 class="text-center fw-bold mb-4">Available Machinery</h2>
+
+    <!-- Machinery Grid -->
     <div class="row">
-     <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-        <img src="{% static 'images/Pay1.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-     </div>
-     <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-         <img src="{% static 'images/Pay2.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-     </div>
-     <div class="col-sm-3">
-      <div class="card mb-3">
-        <div class="card-body">
-         <img src="{% static 'images/Pay3.jpg' %}" alt="" srcset="" class="img-fluid">
-        </div>
-      </div>
-     </div>
-     <div class="col-sm-3">
-        <div class="card mb-3">
-          <div class="card-body">
-           <img src="{% static 'images/Pay1.jpg' %}" alt="" srcset="" class="img-fluid">
-          </div>
-        </div>
-       </div>
+        {% for machine in machines %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow-lg rounded-3 h-100">
+                    <img src="{{ machine.product_image.url }}" class="card-img-top" alt="{{ machine.title }}" style="height: 250px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title mb-3">{{ machine.title }}</h5>
+                        <p class="card-text text-muted">TK. {{ machine.rent_perday }} per day</p>
+                        <a href="{% url 'machinery-detail' machine.id %}" class="btn btn-primary w-100 mt-auto">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-   </div>
-   <!-- End Payment Info Section -->
 
+    <!-- Pagination -->
+    <div class="pagination-container text-center mt-5">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if machines.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ machines.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
 
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ machines.number }} of {{ machines.paginator.num_pages }}</span>
+                </li>
 
-<div class="machines m-3">
-    <h2 class="text-center fw-bold">Machines</h2>
-    <!-- Slider 1 -->
-    <div class="owl-carousel" id="slider1">
-            
-            {% for True in machines %}
-            
-        <a href="{% url 'machinery-detail' True.id %}" class="btn">
-            <div class="item"><img src="{{True.product_image.url}}" alt="" height="200px"><span
-                    class=" text-light">{{True.title}}</span><br><span class="fs-5  text-light">TK. {{True.rent_perday}}</span></div>
-        </a>
-         {% endfor %}
+                {% if machines.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ machines.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ machines.paginator.num_pages }}" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 </div>
 
-<hr>
-
-
-  
 {% endblock body %}
+
+<style>
+  /* Enhanced Card Hover Effect */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Set a fixed height for the image */
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Button Hover Effects */
+.btn-primary {
+    font-weight: bold;
+    padding: 12px 0;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Pagination Styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.pagination .page-item .page-link {
+    border-radius: 25px;
+    padding: 12px 18px;
+    font-weight: bold;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #aaa;
+}
+
+/* Card Body Styling */
+.card-body {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    flex: 1;
+}
+</style>

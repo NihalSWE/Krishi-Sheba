@@ -1,56 +1,113 @@
 {% extends 'Pages/base.html' %}
 {% load static %}
-{% block title %}Search{% endblock title %}
-
+{% block title %}Agriculture Information{% endblock title %}
 
 {% block body %}
-<section class="dash-heading py-5 text-dark ">
-    <div class="container">     
-        <div class="row text-center"> 
-        <div class="col-md-12"> 
-     <div class="text-center"> 
-             <h1 class="display-4">Agri. Informations </h1> 
-            <p class="lead">Show Our Current informations </p> 
-</div>
-</div>
-</div>
-</div>
+<style>
+    /* Header Section */
+    .dash-heading h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #333;
+    }
+    .dash-heading p {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    /* Section Styling */
+    .info-section {
+        padding: 30px 25px;
+        margin-top: 40px;
+        max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        background-color: #fafafa;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    }
+    .info-section h3 {
+        font-weight: 600;
+        color: #444;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .info-card {
+        padding: 18px;
+        margin: 12px 0;
+        border-radius: 8px;
+        background-color: #fff;
+        transition: box-shadow 0.3s ease;
+        border-left: 4px solid #007bff;
+    }
+    .info-card:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+    .info-card h4 a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .info-card h4 a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+    .info-card p {
+        color: #666;
+        font-size: 1rem;
+        margin-top: 6px;
+    }
+</style>
+
+<section class="dash-heading py-5 text-center">
+    <div class="container">
+        <h1>Agricultural Information</h1>
+        <p>Explore the latest resources and guides in agriculture</p>
+    </div>
 </section>
-<div>
-    <h3 class="text-center mt-5">Veterinary  </h3>
-<div class="row">
-<div class="col-md-6 offset-md-3 mb-3 p-3 border shadow  text-light">
-<div class="card-body pl-5">
-<h3><a href="https://www.petzonebd.com/veterinarian-pet-doctor-dhaka/">1. Vet & Animal Doctors List & Contacts in Bangladesh</a></h3>
-</div>
-</div>
-</div>
-</div>
 
-<div>
-    <h3 class="text-center mt-5"> Paddy  </h3>
-    <div class="row">
-    <div class="col-md-6 offset-md-3 mb-3 p-3 border shadow  text-light">
-    <div class="card-body pl-5">
-    <h3><a href="https://bn.wikipedia.org/wiki/%E0%A6%A7%E0%A6%BE%E0%A6%A8">1. Everything About Paddy</a></h3>
-    <h3><a href="http://www.brri.gov.bd/site/page/bd9bd45c-af5e-423d-b370-21ec38997e14/-">2. District based success in paddy</a></h3>
-    <h3><a href="http://www.brri.gov.bd/site/page/c23e09bb-b34a-4e78-916a-a124196dc3e8">3. Rice variety 1980-2022</a></h3>
-    <h3><a href="https://www.bamis.gov.bd/thresholds/1/all/76">4. Crop weather information</a></h3>
-    <h3><a href="https://iubat.edu/iaas/dhan2.html">5. Improved method of paddy cultivation</a></h3>
+<div class="container">
+    <!-- Veterinary Section -->
+    <div class="info-section">
+        <h3>Veterinary</h3>
+        <div class="info-card">
+            <h4><a href="https://www.petzonebd.com/veterinarian-pet-doctor-dhaka/">Vet & Animal Doctors List & Contacts in Bangladesh</a></h4>
+            <p>Find trusted veterinarians and pet care experts across Bangladesh to help care for your animals.</p>
+        </div>
     </div>
-    </div>
-    </div>
-</div>
 
-<div>
-    <h3 class="text-center mt-5"> Wheat  </h3>
-    <div class="row">
-    <div class="col-md-6 offset-md-3 mb-3 p-3 border shadow  text-light">
-    <div class="card-body pl-5">
-    <h3><a href="https://plantix.net/bn/library/crops/wheat">1. Everything About Wheat</a></h3>
-  
+    <!-- Paddy Section -->
+    <div class="info-section">
+        <h3>Paddy</h3>
+        <div class="info-card">
+            <h4><a href="https://bn.wikipedia.org/wiki/%E0%A6%A7%E0%A6%BE%E0%A6%A8">Everything About Paddy</a></h4>
+            <p>Comprehensive information about paddy, including types, cultivation methods, and harvesting tips.</p>
+        </div>
+        <div class="info-card">
+            <h4><a href="http://www.brri.gov.bd/site/page/bd9bd45c-af5e-423d-b370-21ec38997e14/-">District-based Success in Paddy</a></h4>
+            <p>Learn about regional success stories in paddy production and factors contributing to yield improvement.</p>
+        </div>
+        <div class="info-card">
+            <h4><a href="http://www.brri.gov.bd/site/page/c23e09bb-b34a-4e78-916a-a124196dc3e8">Rice Variety 1980-2022</a></h4>
+            <p>Explore the development and variety changes in rice from 1980 to the present.</p>
+        </div>
+        <div class="info-card">
+            <h4><a href="https://www.bamis.gov.bd/thresholds/1/all/76">Crop Weather Information</a></h4>
+            <p>Stay updated with crop weather information for better planning and management of paddy cultivation.</p>
+        </div>
+        <div class="info-card">
+            <h4><a href="https://iubat.edu/iaas/dhan2.html">Improved Method of Paddy Cultivation</a></h4>
+            <p>Discover advanced techniques for paddy cultivation to enhance yield and quality.</p>
+        </div>
     </div>
-    </div>
+
+    <!-- Wheat Section -->
+    <div class="info-section">
+        <h3>Wheat</h3>
+        <div class="info-card">
+            <h4><a href="https://plantix.net/bn/library/crops/wheat">Everything About Wheat</a></h4>
+            <p>Detailed insights into wheat cultivation, including soil requirements, irrigation practices, and disease management.</p>
+        </div>
     </div>
 </div>
 {% endblock body %}
