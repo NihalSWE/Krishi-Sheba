@@ -23,7 +23,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'django-insecure-glalxdkvayx2s2k(of25*2(ct6vf8k1ol=8t^csbt$2s4wppiv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'KrishiSheba.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -119,17 +119,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-CRISPY_TEMPLATE_PACK="bootstrap4"
+CRISPY_TEMPLATE_PACK="bootstrap5"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
-if DEBUG: 
-   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-else:
-   STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# This is where your static files are stored in development (in your app folders).
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Or specify the path to your static folder
+]
 
+# This is where the static files will be collected when you run `collectstatic` (for production).
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR /'media'

@@ -2,18 +2,78 @@
 
 
 {% block title %}Home{% endblock title %}
+
+
+
 {% block body %}
+<style>
+   /** banner section **/
+
+
+   .banner_main {
+        {% comment %} background-image : url(..static/images/Banner2.jpg); {% endcomment %}
+        /* background : blue; */
+        background-repeat: no-repeat;
+        min-height: 840px;
+        background-size: 100% 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+   }
    
+   .text-bg {
+        text-align: center;
+   }
+   
+   .text-bg h1 {
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 110px;
+        line-height: 120px;
+        padding-bottom: 15px;
+        font-weight: bold;
+   }
+   
+   .text-bg p {
+        font-size: 17px;
+        color: #fff;
+        line-height: 28px;
+        font-weight: 500;
+        padding-bottom: 50px;
+        display: block;
+   }
+   
+   .text-bg a {
+        font-size: 17px;
+        background-color: transparent;
+        color: #fff;
+        font-weight: 600;
+        padding: 11px 0px;
+        width: 100%;
+        max-width: 230px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 30px;
+        border: yellowgreen solid 4px;
+        transition: ease-in all 0.5s;
+   }
+   
+   .text-bg a:hover {
+        background-color: #13110e;
+        color: #fff;
+        transition: ease-in all 0.5s;
+   }
+   
+   
+   /** end banner section **/
+
+</style>
 {% load static %}
 
    
    <!-- body -->
    <body class="main-layout">
-      <!-- loader  -->
-      <div class="loader_bg">
-         <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="" /></div>
-      </div>
-      <!-- end loader -->
 
       <!-- banner -->
       

@@ -1,4 +1,4 @@
-from turtle import title
+
 from django.http import JsonResponse
 from django.shortcuts import render,redirect
 from unicodedata import category
